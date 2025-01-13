@@ -49,10 +49,9 @@ void FPSCounter::updateFPS(sf::Time elapsedTime)
 	this->updateTime += elapsedTime;
 
 	if (this->updateTime >= sf::milliseconds(100)) {
-		float fps = this->framesPassed / this->updateTime.asSeconds();
-		this->statsText->setString("FPS: " + std::to_string(static_cast<int>(fps)) + "\n");
-
+		int frames = this->framesPassed / this->TIME_PER_FRAME.asSeconds();
+		this->statsText->setString("FPS: " + std::to_string(this->framesPassed) + "\n");
 		this->framesPassed = 0;
-		this->updateTime = sf::Time::Zero;
+		this->updateTime = sf::seconds(0);
 	}
 }
