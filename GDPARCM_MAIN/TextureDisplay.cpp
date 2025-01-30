@@ -24,7 +24,7 @@ void TextureDisplay::update(sf::Time deltaTime)
 	this->ticks += BaseRunner::TIME_PER_FRAME.asMilliseconds();
 	
 	//<code here for spawning icon object periodically>
-	if(this->ticks >= 500)
+	if(this->ticks >= 150 && this->iconList.size() < TextureManager::getInstance()->streamingAssetCount)
 	{
 		this->ticks = 0;
 		this->spawnObject();

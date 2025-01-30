@@ -14,6 +14,10 @@ void IconObject::initialize()
 	this->sprite = new sf::Sprite();
 	TextureManager::getInstance()->loadSingleStreamAsset(this->textureIndex);
 	sf::Texture* texture = TextureManager::getInstance()->getStreamTextureFromList(this->textureIndex);
+	if(texture == nullptr)
+	{
+		return;
+	}
 	this->sprite->setTexture(*texture);
 }
 
