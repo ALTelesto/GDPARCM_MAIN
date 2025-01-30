@@ -12,9 +12,14 @@ public:
 	BaseRunner();
 	void run();
 
+	static BaseRunner* getInstance();
+	static BaseRunner* sharedInstance;
+	float getFPS() const;
+
 private:
 	
 	sf::RenderWindow		window;
+	float fps = 0.0f;
 
 	void render();
 	void processEvents();
