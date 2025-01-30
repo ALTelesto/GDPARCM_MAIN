@@ -4,6 +4,8 @@
 #include "TextureManager.h"
 #include "StringUtils.h"
 #include "IETThread.h"
+#include "StreamAssetLoader.h"
+#include "IExecutionEvent.h"
 
 //a singleton class
 TextureManager* TextureManager::sharedInstance = NULL;
@@ -38,40 +40,31 @@ void TextureManager::loadFromAssetList()
 }
 
 void TextureManager::loadStreamingAssets()
-{
-	for(const auto& entry : std::filesystem::directory_iterator(STREAMING_PATH))
-	{
+{	
+	for (const auto& entry : std::filesystem::directory_iterator(STREAMING_PATH)) {
+		//simulate loading of very large file
 		IETThread::sleep(200);
 
 		String path = entry.path().generic_string();
 		std::vector<String> tokens = StringUtils::split(path, '/');
-		String assetName = StringUtils::split(tokens[tokens.size() - 1], '.')[0];
+		String assetName = StringUtils::split(tokens[tokens.size() - 1], '.')[0];	
 		this->instantiateAsTexture(path, assetName, true);
+		
+		std::cout << "[TextureManager] Loaded streaming texture: " << assetName << std::endl;
 	}
 }
 
-void TextureManager::loadSingleStreamAsset(int index)
+void TextureManager::loadSingleStreamAsset(int index, IExecutionEvent* executionEvent)
 {
-	if (index > streamingAssetCount-1) return;
 	int fileNum = 0;
 	
 	for (const auto& entry : std::filesystem::directory_iterator(STREAMING_PATH)) {
 		if(index == fileNum)
 		{
-			//simulate loading of very large file
-			//<code here for thread sleeping. Fill this up only when instructor told so.>
-			IETThread::sleep(200);
-			
-			//<code here for loading asset>
-			String assetName = "";
-
 			String path = entry.path().generic_string();
-			std::vector<String> tokens = StringUtils::split(path, '/');
-			assetName = StringUtils::split(tokens[tokens.size() - 1], '.')[0];
+			StreamAssetLoader* assetLoader = new StreamAssetLoader(path, executionEvent);
+			assetLoader->start();
 			
-			this->instantiateAsTexture(path, assetName, true);
-	
-			std::cout << "[TextureManager] Loaded streaming texture: " << assetName << std::endl;
 			break;
 		}
 

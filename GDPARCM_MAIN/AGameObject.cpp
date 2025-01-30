@@ -15,7 +15,7 @@ AGameObject::String AGameObject::getName() {
 }
 
 void AGameObject::draw(sf::RenderWindow* targetWindow) {
-	if (this->sprite != NULL) {
+	if (this->sprite != nullptr) {
 		this->sprite->setPosition(this->posX, this->posY);
 		this->sprite->setScale(this->scaleX, this->scaleY);
 		targetWindow->draw(*this->sprite);
