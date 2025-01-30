@@ -1,9 +1,13 @@
 #pragma once
 #include <unordered_map>
+
+#include "IExecutionEvent.h"
 #include "SFML/Graphics.hpp"
 
-class IExecutionEvent;
-class TextureManager
+#include "ThreadPool.h"
+#include "IExecutionEvent.h"
+
+class TextureManager:public IExecutionEvent
 {
 public:
 	typedef std::string String;
@@ -23,6 +27,7 @@ public:
 
 	void instantiateAsTexture(String path, String assetName, bool isStreaming);
 	
+	void onFinishedExecution() override;
 
 private:
 	TextureManager();
@@ -33,6 +38,8 @@ private:
 	HashTable textureMap;
 	TextureList baseTextureList;
 	TextureList streamTextureList;
+
+	ThreadPool* threadPool;
 
 	const std::string STREAMING_PATH = "Media/Streaming/";
 	
