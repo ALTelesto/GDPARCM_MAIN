@@ -22,29 +22,17 @@ void TextureDisplay::processInput(sf::Event event)
 void TextureDisplay::update(sf::Time deltaTime)
 {
 	this->ticks += BaseRunner::TIME_PER_FRAME.asMilliseconds();
-	if (this->streamingType == StreamingType::BATCH_LOAD && !this->startedStreaming && this->ticks > this->STREAMING_LOAD_DELAY)
+	
+	//<code here for spawning icon object periodically>
+	if(this->ticks >= 150 && this->iconList.size() < TextureManager::getInstance()->streamingAssetCount)
 	{
-		this->startedStreaming = true;
-		this->ticks = 0.0f;
-		TextureManager::getInstance()->loadStreamingAssets();
+		this->ticks = 0;
+		this->spawnObject();
 	}
-	else if (this->streamingType == StreamingType::SINGLE_STREAM && this->ticks > this->STREAMING_LOAD_DELAY)
-	{
-		this->ticks = 0.0f;
-		TextureManager::getInstance()->loadSingleStreamAsset(this->numDisplayed, this);
-		this->numDisplayed++;
-	}
-}
-
-void TextureDisplay::onFinishedExecution()
-{
-	this->spawnObject(); //executes spawn once the texture is ready.
 }
 
 void TextureDisplay::spawnObject()
 {
-	this->guard.lock();
-	
 	String objectName = "Icon_" + to_string(this->iconList.size());
 	IconObject* iconObj = new IconObject(objectName, this->iconList.size());
 	this->iconList.push_back(iconObj);
@@ -64,6 +52,4 @@ void TextureDisplay::spawnObject()
 		this->rowGrid++;
 	}
 	GameObjectManager::getInstance()->addObject(iconObj);
-
-	this->guard.unlock();
 }

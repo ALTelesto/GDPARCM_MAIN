@@ -44,12 +44,14 @@ void FPSCounter::draw(sf::RenderWindow* targetWindow)
 }
 
 void FPSCounter::updateFPS(sf::Time elapsedTime)
-{	
+{
+	this->framesPassed++;
 	this->updateTime += elapsedTime;
-	if (this->updateTime >= sf::seconds(0.25f))
-	{
-		this->updateTime = sf::seconds(0.0f);
-		this->statsText->setString("FPS: " + std::to_string(BaseRunner::getInstance()->getFPS()) + "\n");
-		
+
+	if (this->updateTime >= sf::seconds(2)) {
+		int frames = this->framesPassed;
+		this->statsText->setString("FPS: " + std::to_string(this->framesPassed) + "\n");
+		this->framesPassed = 0;
+		this->updateTime = sf::seconds(0);
 	}
 }

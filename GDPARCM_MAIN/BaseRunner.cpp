@@ -1,7 +1,4 @@
 #include "BaseRunner.h"
-
-#include <iostream>
-
 #include  "GameObjectManager.h"
 #include "BGObject.h"
 #include "TextureManager.h"
@@ -11,17 +8,10 @@
 /// <summary>
 /// This demonstrates a running parallax background where after X seconds, a batch of assets will be streamed and loaded.
 /// </summary>
-
-const float FRAME_RATE = 60.0f;
-const sf::Time BaseRunner::TIME_PER_FRAME = sf::seconds(1.0f / FRAME_RATE);
-BaseRunner* BaseRunner::sharedInstance = NULL;
+const sf::Time BaseRunner::TIME_PER_FRAME = sf::seconds(1.f / 60.f);
 
 BaseRunner::BaseRunner() :
 	window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "HO: Entity Component", sf::Style::Close) {
-
-	sharedInstance = this;
-	this->window.setFramerateLimit(int(FRAME_RATE));
-	
 	//load initial textures
 	TextureManager::getInstance()->loadFromAssetList();
 
@@ -38,32 +28,22 @@ BaseRunner::BaseRunner() :
 
 void BaseRunner::run() {
 	sf::Clock clock;
-	sf::Time previousTime = clock.getElapsedTime();
-	sf::Time currentTime;
+	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	while (this->window.isOpen())
 	{
-		currentTime = clock.getElapsedTime();
-		float deltaTime = currentTime.asSeconds() - previousTime.asSeconds();
-		this->fps = floor(1.0f / deltaTime);
+		sf::Time elapsedTime = clock.restart();
+		timeSinceLastUpdate += elapsedTime;
+		while (timeSinceLastUpdate > TIME_PER_FRAME)
+		{
+			timeSinceLastUpdate -= TIME_PER_FRAME;
 
-		processEvents();
-		update(sf::seconds(1.0f / this->fps));
+			processEvents();
+			//update(TIME_PER_FRAME);
+			update(elapsedTime);
+		}
+
 		render();
-		
-		previousTime = currentTime;
-		
-		
 	}
-}
-
-BaseRunner* BaseRunner::getInstance()
-{
-	return sharedInstance;
-}
-
-float BaseRunner::getFPS() const
-{
-	return this->fps;
 }
 
 void BaseRunner::processEvents()
