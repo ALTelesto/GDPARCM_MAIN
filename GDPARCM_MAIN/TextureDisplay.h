@@ -24,7 +24,7 @@ private:
 
 	enum StreamingType { BATCH_LOAD = 0, SINGLE_STREAM = 1 };
 	const float STREAMING_LOAD_DELAY = 0.01f;
-	const StreamingType streamingType = SINGLE_STREAM;
+	const StreamingType streamingType = BATCH_LOAD;
 	float ticks = 0.0f;
 	bool startedStreaming = false;
 

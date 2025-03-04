@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClCompile Include="AGameObject.cpp" />
     <ClCompile Include="BaseRunner.cpp" />
+    <ClCompile Include="BatchAssetLoader.cpp" />
     <ClCompile Include="BGObject.cpp" />
     <ClCompile Include="FPSCounter.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
@@ -153,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="AGameObject.h" />
     <ClInclude Include="BaseRunner.h" />
+    <ClInclude Include="BatchAssetLoader.h" />
     <ClInclude Include="BGObject.h" />
     <ClInclude Include="FPSCounter.h" />
     <ClInclude Include="GameObjectManager.h" />

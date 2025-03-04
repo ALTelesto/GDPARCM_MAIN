@@ -2,6 +2,8 @@
 #include <iostream>
 #include <filesystem>
 #include "TextureManager.h"
+
+#include "BatchAssetLoader.h"
 #include "StringUtils.h"
 #include "IETThread.h"
 #include "StreamAssetLoader.h"
@@ -22,7 +24,7 @@ TextureManager* TextureManager::getInstance() {
 TextureManager::TextureManager()
 {
 	this->countStreamingAssets();
-	this->threadPool = new ThreadPool("Texture Manager Threads", 50);
+	this->threadPool = new ThreadPool("Texture Manager Threads", 12);
 	this->threadPool->startScheduler();
 }
 
@@ -41,22 +43,25 @@ void TextureManager::loadFromAssetList()
 	}
 }
 
-void TextureManager::loadStreamingAssets()
+void TextureManager::loadStreamingAssets(IExecutionEvent* executionEvent)
 {
-	//int i = 0;
-	for (const auto& entry : std::filesystem::directory_iterator(STREAMING_PATH)) {
-		//simulate loading of very large file
-		IETThread::sleep(200);
+	BatchAssetLoader* batchAssetLoader = new BatchAssetLoader(executionEvent);
+	this->threadPool->scheduleTask(batchAssetLoader);
 
-		String path = entry.path().generic_string();
-		std::vector<String> tokens = StringUtils::split(path, '/');
-		String assetName = StringUtils::split(tokens[tokens.size() - 1], '.')[0];
-		this->instantiateAsTexture(path, assetName, true);
+	////int i = 0;
+	//for (const auto& entry : std::filesystem::directory_iterator(STREAMING_PATH)) {
+	//	//simulate loading of very large file
+	//	IETThread::sleep(200);
 
-		std::cout << "[TextureManager] Loaded streaming texture: " << assetName << std::endl;
-		//this->loadSingleStreamAsset(i, this);
-		//i++;
-	}
+	//	String path = entry.path().generic_string();
+	//	std::vector<String> tokens = StringUtils::split(path, '/');
+	//	String assetName = StringUtils::split(tokens[tokens.size() - 1], '.')[0];
+	//	this->instantiateAsTexture(path, assetName, true);
+
+	//	std::cout << "[TextureManager] Loaded streaming texture: " << assetName << std::endl;
+	//	//this->loadSingleStreamAsset(i, this);
+	//	//i++;
+	//}
 }
 
 void TextureManager::loadSingleStreamAsset(int index, IExecutionEvent* executionEvent)
@@ -138,4 +143,14 @@ void TextureManager::instantiateAsTexture(String path, String assetName, bool is
 
 void TextureManager::onFinishedExecution()
 {
+}
+
+int TextureManager::getStreamingAssetCount()
+{
+	return this->streamingAssetCount;
+}
+
+ThreadPool* TextureManager::getThreadPool()
+{
+	return this->threadPool;
 }

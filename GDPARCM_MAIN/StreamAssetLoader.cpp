@@ -14,19 +14,20 @@ StreamAssetLoader::StreamAssetLoader(String path, IExecutionEvent* executionEven
 
 StreamAssetLoader::~StreamAssetLoader()
 {
-	std::cout << "Destroying stream asset loader. " << std::endl;
+	//std::cout << "Destroying stream asset loader. " << std::endl;
 }
 
 void StreamAssetLoader::onStartTask()
 {
-	IETThread::sleep(1000);
+	//IETThread::sleep(1000);
+	
 
 	std::vector<String> tokens = StringUtils::split(path, '/');
 	String assetName = StringUtils::split(tokens[tokens.size() - 1], '.')[0];
+	std::this_thread::sleep_for(std::chrono::milliseconds(20));
 	TextureManager::getInstance()->instantiateAsTexture(path, assetName, true);
 
-	std::cout << "[TextureManager] Loaded streaming texture: " << assetName << std::endl;
-
+	//std::cout << "[TextureManager] Loaded streaming texture: " << assetName << std::endl;
 	this->execEvent->onFinishedExecution();
 	//delete after being done
 	delete this;
