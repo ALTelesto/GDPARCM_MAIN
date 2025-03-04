@@ -1,1 +1,3 @@
 Media/Textures/Desert.png
+Media/Textures/circle.png
+Media/Textures/gradient.png

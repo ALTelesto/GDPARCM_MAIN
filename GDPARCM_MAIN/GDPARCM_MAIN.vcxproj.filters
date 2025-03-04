@@ -13,120 +13,180 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\GameObjects">
+      <UniqueIdentifier>{2026eb4d-6fe4-4774-9454-638ee3ba0574}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\FPSCounter">
+      <UniqueIdentifier>{c6678d20-2c90-4f59-b0a6-d90033af39ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\View">
+      <UniqueIdentifier>{9ba80107-538d-4a4a-a61c-903ab8f6cffb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Resources">
+      <UniqueIdentifier>{6b2b0132-95bd-4fc3-879f-9750f15cafd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utility">
+      <UniqueIdentifier>{ca0fb950-fd6d-4e4a-9e5b-565a6425991f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Threads">
+      <UniqueIdentifier>{1012d17b-01db-4713-8ca5-a49ed75ba6d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Threads\BatchAssetLoader">
+      <UniqueIdentifier>{259e1e3e-bf02-4a61-84ab-843c62a7d392}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Threads\StreamAssetLoader">
+      <UniqueIdentifier>{d1949846-fb8d-462d-a8f2-f095bc41ea8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Threads\HelloWorldThread">
+      <UniqueIdentifier>{344cc019-0ede-44a3-96f3-df60ebc6a372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Loading Screen Entities">
+      <UniqueIdentifier>{527ac5c8-670b-433a-b0f9-695d542199fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Legacy">
+      <UniqueIdentifier>{3d4e94e0-edfb-4ae8-8509-5d3108da5e42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Legacy\BGObject">
+      <UniqueIdentifier>{521b7265-598c-405c-8182-99ac8516a42f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Legacy\IconObject">
+      <UniqueIdentifier>{f3b2e8e8-329a-47db-bff9-7af809656439}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Legacy\TextureDisplay">
+      <UniqueIdentifier>{337473b5-0571-4d17-8ad6-6d325bb923c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Loading Screen Entities\BeatCircle">
+      <UniqueIdentifier>{843849c2-8460-4ee3-a994-54b84ff1dbe3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Loading Screen Entities\BeatBG">
+      <UniqueIdentifier>{a2fac790-4a51-4a0c-a71d-23e251e722f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AGameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseRunner.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BGObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FPSCounter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObjectManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IconObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IETThread.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MathUtils.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="AGameObject.cpp">
+      <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="StringUtils.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="IconObject.cpp">
+      <Filter>Source Files\GameObjects\Legacy\IconObject</Filter>
     </ClCompile>
-    <ClCompile Include="TextureDisplay.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="BGObject.cpp">
+      <Filter>Source Files\GameObjects\Legacy\BGObject</Filter>
+    </ClCompile>
+    <ClCompile Include="FPSCounter.cpp">
+      <Filter>Source Files\GameObjects\FPSCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseRunner.cpp">
+      <Filter>Source Files\View</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectManager.cpp">
+      <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="TextureManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HelloWorldThread.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IExecutionEvent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IWorkerAction.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PoolWorkerThread.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StreamAssetLoader.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Resources</Filter>
     </ClCompile>
     <ClCompile Include="ThreadPool.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Threads</Filter>
+    </ClCompile>
+    <ClCompile Include="PoolWorkerThread.cpp">
+      <Filter>Source Files\Threads</Filter>
+    </ClCompile>
+    <ClCompile Include="IWorkerAction.cpp">
+      <Filter>Source Files\Threads</Filter>
+    </ClCompile>
+    <ClCompile Include="IExecutionEvent.cpp">
+      <Filter>Source Files\Threads</Filter>
+    </ClCompile>
+    <ClCompile Include="IETThread.cpp">
+      <Filter>Source Files\Threads</Filter>
     </ClCompile>
     <ClCompile Include="BatchAssetLoader.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Threads\BatchAssetLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="StreamAssetLoader.cpp">
+      <Filter>Source Files\Threads\StreamAssetLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="MathUtils.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="StringUtils.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureDisplay.cpp">
+      <Filter>Source Files\GameObjects\Legacy\TextureDisplay</Filter>
+    </ClCompile>
+    <ClCompile Include="HelloWorldThread.cpp">
+      <Filter>Source Files\Threads\HelloWorldThread</Filter>
+    </ClCompile>
+    <ClCompile Include="BeatCircle.cpp">
+      <Filter>Source Files\GameObjects\Loading Screen Entities\BeatCircle</Filter>
+    </ClCompile>
+    <ClCompile Include="BeatBG.cpp">
+      <Filter>Source Files\GameObjects\Loading Screen Entities\BeatBG</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HelloWorldThread.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IExecutionEvent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IWorkerAction.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PoolWorkerThread.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StreamAssetLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ThreadPool.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IETThread.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="AGameObject.h">
+      <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="IconObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObjectManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FPSCounter.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\GameObjects\Legacy\IconObject</Filter>
     </ClInclude>
     <ClInclude Include="BGObject.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\GameObjects\Legacy\BGObject</Filter>
+    </ClInclude>
+    <ClInclude Include="FPSCounter.h">
+      <Filter>Source Files\GameObjects\FPSCounter</Filter>
     </ClInclude>
     <ClInclude Include="BaseRunner.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\View</Filter>
     </ClInclude>
-    <ClInclude Include="AGameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StringUtils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureDisplay.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="GameObjectManager.h">
+      <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="TextureManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="StringUtils.h">
+      <Filter>Source Files\Utility</Filter>
     </ClInclude>
     <ClInclude Include="MathUtils.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadPool.h">
+      <Filter>Source Files\Threads</Filter>
+    </ClInclude>
+    <ClInclude Include="IETThread.h">
+      <Filter>Source Files\Threads</Filter>
+    </ClInclude>
+    <ClInclude Include="IWorkerAction.h">
+      <Filter>Source Files\Threads</Filter>
+    </ClInclude>
+    <ClInclude Include="IExecutionEvent.h">
+      <Filter>Source Files\Threads</Filter>
+    </ClInclude>
+    <ClInclude Include="PoolWorkerThread.h">
+      <Filter>Source Files\Threads</Filter>
     </ClInclude>
     <ClInclude Include="BatchAssetLoader.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Threads\BatchAssetLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="StreamAssetLoader.h">
+      <Filter>Source Files\Threads\StreamAssetLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureDisplay.h">
+      <Filter>Source Files\GameObjects\Legacy\TextureDisplay</Filter>
+    </ClInclude>
+    <ClInclude Include="HelloWorldThread.h">
+      <Filter>Source Files\Threads\HelloWorldThread</Filter>
+    </ClInclude>
+    <ClInclude Include="BeatCircle.h">
+      <Filter>Source Files\GameObjects\Loading Screen Entities\BeatCircle</Filter>
+    </ClInclude>
+    <ClInclude Include="BeatBG.h">
+      <Filter>Source Files\GameObjects\Loading Screen Entities\BeatBG</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

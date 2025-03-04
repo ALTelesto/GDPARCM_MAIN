@@ -6,6 +6,9 @@
 #include "FPSCounter.h"
 #include <iostream>
 
+#include "BeatBG.h"
+#include "BeatCircle.h"
+
 /// <summary>
 /// This demonstrates a running parallax background where after X seconds, a batch of assets will be streamed and loaded.
 /// </summary>
@@ -23,11 +26,28 @@ BaseRunner::BaseRunner() :
 	TextureManager::getInstance()->loadFromAssetList();
 
 	//load objects
-	BGObject* bgObject = new BGObject("BGObject");
+	//BGObject* bgObject = new BGObject("BGObject");
+	//GameObjectManager::getInstance()->addObject(bgObject);
+
+	//TextureDisplay* display = new TextureDisplay();
+	//GameObjectManager::getInstance()->addObject(display);
+	BeatBG* bgObject = new BeatBG("BGObject");
 	GameObjectManager::getInstance()->addObject(bgObject);
 
-	TextureDisplay* display = new TextureDisplay();
-	GameObjectManager::getInstance()->addObject(display);
+	float bpm = 20.0;
+	int beats = 8;
+	float widthPartition = WINDOW_WIDTH / (beats+1);
+	float heightPartition = WINDOW_HEIGHT / 5;
+	for(int i = 0; i < beats; i++)
+	{
+		BeatCircle* circle = new BeatCircle("Beat "+i);
+		float x = widthPartition + (widthPartition*i) - (widthPartition/3);
+		circle->setHome(x, heightPartition - (heightPartition / 2));
+		circle->setTarget(x, heightPartition + heightPartition * 3);
+		float beatSpeed = (bpm - (0.25 * i)) / 60.0;
+		circle->setSpeed(beatSpeed);
+		GameObjectManager::getInstance()->addObject(circle);
+	}
 
 	FPSCounter* fpsCounter = new FPSCounter();
 	GameObjectManager::getInstance()->addObject(fpsCounter);
