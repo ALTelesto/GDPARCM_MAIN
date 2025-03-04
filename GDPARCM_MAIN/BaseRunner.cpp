@@ -34,6 +34,17 @@ BaseRunner::BaseRunner() :
 	BeatBG* bgObject = new BeatBG("BGObject");
 	GameObjectManager::getInstance()->addObject(bgObject);
 
+	sf::Color beatColor[] = {
+		sf::Color(255,0,0,255),
+		sf::Color(255,125,0,255),
+		sf::Color(255,200,0,255),
+		sf::Color(0,255,0,255),
+		sf::Color(0,255,200,255),
+		sf::Color(0,125,255,255),
+		sf::Color(125,0,255,255),
+		sf::Color(200,0,255,255),
+	};
+
 	float bpm = 20.0;
 	int beats = 8;
 	float widthPartition = WINDOW_WIDTH / (beats+1);
@@ -46,6 +57,7 @@ BaseRunner::BaseRunner() :
 		circle->setTarget(x, heightPartition + heightPartition * 3);
 		float beatSpeed = (bpm - (0.25 * i)) / 60.0;
 		circle->setSpeed(beatSpeed);
+		circle->setBeatColor(beatColor[i]);
 		GameObjectManager::getInstance()->addObject(circle);
 	}
 
