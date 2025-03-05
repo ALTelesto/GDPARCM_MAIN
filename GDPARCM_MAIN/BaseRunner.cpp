@@ -8,6 +8,7 @@
 
 #include "BeatBG.h"
 #include "BeatCircle.h"
+#include "SFXManager.h"
 
 /// <summary>
 /// This demonstrates a running parallax background where after X seconds, a batch of assets will be streamed and loaded.
@@ -24,6 +25,9 @@ BaseRunner::BaseRunner() :
 
 	//load initial textures
 	TextureManager::getInstance()->loadFromAssetList();
+
+	//load initial sfx
+	SFXManager::getInstance()->loadFromAssetList();
 
 	//load objects
 	//BGObject* bgObject = new BGObject("BGObject");
@@ -45,13 +49,13 @@ BaseRunner::BaseRunner() :
 		sf::Color(200,0,255,255),
 	};
 
-	float bpm = 20.0;
+	float bpm = 15.0;
 	int beats = 8;
 	float widthPartition = WINDOW_WIDTH / (beats+1);
 	float heightPartition = WINDOW_HEIGHT / 5;
 	for(int i = 0; i < beats; i++)
 	{
-		BeatCircle* circle = new BeatCircle("Beat "+i);
+		BeatCircle* circle = new BeatCircle("Beat "+i,i);
 		float x = widthPartition + (widthPartition*i) - (widthPartition/3);
 		circle->setHome(x, heightPartition - (heightPartition / 2));
 		circle->setTarget(x, heightPartition + heightPartition * 3);

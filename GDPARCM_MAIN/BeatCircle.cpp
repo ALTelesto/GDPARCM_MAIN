@@ -4,9 +4,10 @@
 
 #include "BeatBG.h"
 #include "GameObjectManager.h"
+#include "SFXManager.h"
 #include "TextureManager.h"
 
-BeatCircle::BeatCircle(String name) : AGameObject(name)
+BeatCircle::BeatCircle(String name, int id) : AGameObject(name), id(id)
 {
 
 }
@@ -20,10 +21,36 @@ void BeatCircle::initialize()
 	
     sprite = new sf::Sprite();
     sprite->setTexture(*texture);
+
+    this->clickThreshold = this->sprite->getTextureRect().height / 2 + 15.0f;
+
+    sf::SoundBuffer* sound = SFXManager::getInstance()->getFromSoundMap(std::to_string(id));
+    if(sound)
+    {
+        this->beatSound = new sf::Sound(*sound);
+    }
 }
 
 void BeatCircle::processInput(sf::Event event)
 {
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    {
+        if (isClick) return;
+        sf::Vector2i mousePosition = sf::Mouse::getPosition();
+        float centerX = posX + this->clickThreshold;
+        float centerY = posY + this->clickThreshold;
+        float distance = std::sqrt(std::pow(mousePosition.x - centerX, 2) + std::pow(mousePosition.y - centerY, 2));
+
+        if (distance <= clickThreshold)
+        {
+            this->clickBeat();
+        }
+        isClick = true;
+    }
+    else
+    {
+        isClick = false;
+    }
 }
 
 void BeatCircle::update(sf::Time deltaTime)
@@ -95,7 +122,8 @@ void BeatCircle::setColorDecay(float value)
 
 void BeatCircle::beat()
 {
-	progress = 0.0f;
+    float excess = progress - 1.0f;
+	progress = 0.0f + excess;
     colorBlend = 1.0f;
 	isReturning = !isReturning;
     if (this->beatSound != nullptr) this->beatSound->play();
@@ -107,4 +135,18 @@ void BeatCircle::beat()
         bg->beat();
     }
     //std::cout << "beat!" << std::endl;
+}
+
+void BeatCircle::clickBeat()
+{
+    if (this->beatSound != nullptr) this->beatSound->play();
+
+    colorBlend = 1.0f;
+
+    BeatBG* bg = dynamic_cast<BeatBG*>(GameObjectManager::getInstance()->findObjectByName("BGObject"));
+    if (bg != nullptr)
+    {
+        bg->setBeatColor(this->beatColor);
+        bg->beat();
+    }
 }

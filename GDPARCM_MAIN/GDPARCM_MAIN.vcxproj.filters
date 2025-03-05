@@ -126,6 +126,9 @@
     <ClCompile Include="BeatBG.cpp">
       <Filter>Source Files\GameObjects\Loading Screen Entities\BeatBG</Filter>
     </ClCompile>
+    <ClCompile Include="SFXManager.cpp">
+      <Filter>Source Files\Resources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AGameObject.h">
@@ -187,6 +190,9 @@
     </ClInclude>
     <ClInclude Include="BeatBG.h">
       <Filter>Source Files\GameObjects\Loading Screen Entities\BeatBG</Filter>
+    </ClInclude>
+    <ClInclude Include="SFXManager.h">
+      <Filter>Source Files\Resources</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

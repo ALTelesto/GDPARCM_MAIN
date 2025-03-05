@@ -5,7 +5,7 @@ class BeatCircle :
     public AGameObject
 {
 public:
-	BeatCircle(String name);
+	BeatCircle(String name, int id = 0);
 	void initialize();
 	void processInput(sf::Event event);
 	void update(sf::Time deltaTime);
@@ -19,6 +19,9 @@ public:
 
 private:
 	void beat();
+	void clickBeat();
+
+	int id;
 
 	float target_X = 960.0f; float target_Y = 810.0f;
 	float home_X = 960.0; float home_Y = 270.0f;
@@ -33,5 +36,7 @@ private:
 	bool isReturning = false;
 
 	sf::Sound* beatSound;
+	bool isClick = false;
+	float clickThreshold;
 };
 
