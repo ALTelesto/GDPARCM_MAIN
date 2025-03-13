@@ -20,6 +20,9 @@ class AGameObject: sf::NonCopyable
 		virtual sf::Vector2f getPosition();
 		virtual sf::Vector2f getScale();
 
+		void setEnabled(bool value);
+		bool isEnabled();
+
 	protected:
 		String name;
 		sf::Sprite* sprite;
@@ -27,5 +30,7 @@ class AGameObject: sf::NonCopyable
 
 		float posX = 0.0f; float posY = 0.0f;
 		float scaleX = 1.0f; float scaleY = 1.0f;
+
+		bool enabled = true;
 };
 

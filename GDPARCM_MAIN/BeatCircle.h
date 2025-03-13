@@ -20,6 +20,7 @@ public:
 private:
 	void beat();
 	void clickBeat();
+	void bigBeat();
 
 	int id;
 
@@ -30,6 +31,8 @@ private:
 	float progress = 1.0f;
 
 	sf::Color beatColor = sf::Color::Cyan;
+	float baseR = 255; float baseG = 255; float baseB = 255; float baseA = 10;
+
 	float colorBlend = 0.0f;
 	float colorDecay = 1.0f;
 
@@ -38,5 +41,12 @@ private:
 	sf::Sound* beatSound;
 	bool isClick = false;
 	float clickThreshold;
+
+	void startEnd();
+
+	bool isEnding = false;
+	bool initEnd = false;
+	bool ended = false;
+	float half_Y = 440.f;
 };
 

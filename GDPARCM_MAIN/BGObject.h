@@ -8,6 +8,6 @@ class BGObject : public AGameObject
 		void processInput(sf::Event event) override;
 		void update(sf::Time deltaTime) override;
 	private:
-		const float SPEED_MULTIPLIER = 100.0f;
+		const float SPEED_MULTIPLIER = 10.0f;
 };
 

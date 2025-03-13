@@ -55,6 +55,16 @@ sf::Vector2f AGameObject::getScale()
 	return this->sprite->getScale();
 }
 
+void AGameObject::setEnabled(bool value)
+{
+	this->enabled = value;
+}
+
+bool AGameObject::isEnabled()
+{
+	return this->enabled;
+}
+
 sf::FloatRect AGameObject::getLocalBounds()
 {
 	return this->sprite->getLocalBounds();

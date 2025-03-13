@@ -132,6 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AGameObject.cpp" />
+    <ClCompile Include="AnimatedSprite.cpp" />
     <ClCompile Include="BaseRunner.cpp" />
     <ClCompile Include="BatchAssetLoader.cpp" />
     <ClCompile Include="BeatBG.cpp" />
@@ -139,23 +140,33 @@
     <ClCompile Include="BGObject.cpp" />
     <ClCompile Include="FPSCounter.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
+    <ClCompile Include="GameObjectPool.cpp" />
     <ClCompile Include="HelloWorldThread.cpp" />
     <ClCompile Include="IconObject.cpp" />
     <ClCompile Include="IETThread.cpp" />
     <ClCompile Include="IExecutionEvent.cpp" />
     <ClCompile Include="IWorkerAction.cpp" />
+    <ClCompile Include="LoadingBar.cpp" />
+    <ClCompile Include="LoadingDoneText.cpp" />
+    <ClCompile Include="LoadingScreenManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathUtils.cpp" />
+    <ClCompile Include="MusicPlayer.cpp" />
+    <ClCompile Include="PoolableObject.cpp" />
     <ClCompile Include="PoolWorkerThread.cpp" />
     <ClCompile Include="SFXManager.cpp" />
+    <ClCompile Include="StaticSprite.cpp" />
     <ClCompile Include="StreamAssetLoader.cpp" />
     <ClCompile Include="StringUtils.cpp" />
     <ClCompile Include="TextureDisplay.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="ThreadPool.cpp" />
+    <ClCompile Include="Thrower.cpp" />
+    <ClCompile Include="ThrownObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AGameObject.h" />
+    <ClInclude Include="AnimatedSprite.h" />
     <ClInclude Include="BaseRunner.h" />
     <ClInclude Include="BatchAssetLoader.h" />
     <ClInclude Include="BeatBG.h" />
@@ -163,19 +174,28 @@
     <ClInclude Include="BGObject.h" />
     <ClInclude Include="FPSCounter.h" />
     <ClInclude Include="GameObjectManager.h" />
+    <ClInclude Include="GameObjectPool.h" />
     <ClInclude Include="HelloWorldThread.h" />
     <ClInclude Include="IconObject.h" />
     <ClInclude Include="IETThread.h" />
     <ClInclude Include="IExecutionEvent.h" />
     <ClInclude Include="IWorkerAction.h" />
+    <ClInclude Include="LoadingBar.h" />
+    <ClInclude Include="LoadingDoneText.h" />
+    <ClInclude Include="LoadingScreenManager.h" />
     <ClInclude Include="MathUtils.h" />
+    <ClInclude Include="MusicPlayer.h" />
+    <ClInclude Include="PoolableObject.h" />
     <ClInclude Include="PoolWorkerThread.h" />
     <ClInclude Include="SFXManager.h" />
+    <ClInclude Include="StaticSprite.h" />
     <ClInclude Include="StreamAssetLoader.h" />
     <ClInclude Include="StringUtils.h" />
     <ClInclude Include="TextureDisplay.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="ThreadPool.h" />
+    <ClInclude Include="Thrower.h" />
+    <ClInclude Include="ThrownObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

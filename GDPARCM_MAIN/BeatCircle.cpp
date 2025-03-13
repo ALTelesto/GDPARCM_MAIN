@@ -4,6 +4,7 @@
 
 #include "BeatBG.h"
 #include "GameObjectManager.h"
+#include "LoadingScreenManager.h"
 #include "SFXManager.h"
 #include "TextureManager.h"
 
@@ -51,40 +52,85 @@ void BeatCircle::processInput(sf::Event event)
     {
         isClick = false;
     }
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) && LoadingScreenManager::getInstance()->isDone())
+    {
+        this->startEnd();
+    }
 }
 
 void BeatCircle::update(sf::Time deltaTime)
 {
     progress += deltaTime.asSeconds() * speed;
 
-    if (progress >= 1.0f)
+    if (progress >= 1.0f && !isEnding)
     {
         progress = 1.0f;
         beat();
+    }
+    else if(progress >= 1.0f && isEnding)
+    {
+        progress = 1.0f;
+        if(ended != true)
+        {
+            this->beatSound->play();
+            sf::Color beatColor = sf::Color(baseR, baseG, baseB, baseA);
+            baseA = 0;
+            ended = true;
+            colorBlend = 1;
+        }
     }
 
     if(colorBlend > 0.0f)
     {
         colorBlend -= deltaTime.asSeconds() * colorDecay;
-        if (colorBlend <= 0.0f) colorBlend = 0.0f;
+        if (colorBlend <= 0.0f && !ended) colorBlend = 0.0f;
+        else if(colorBlend <= 0.0f && ended)
+        {
+            colorBlend = 0.0f;
+            GameObjectManager::getInstance()->deleteObject(this);
+            return;
+        }
+        else if(ended)
+        {
+            this->beatSound->setVolume(100 * colorBlend);
+        }
         sf::Color interpolatedColor = sf::Color(
-            static_cast<sf::Uint8>(255 * (1.0f - colorBlend) + beatColor.r * colorBlend),
-            static_cast<sf::Uint8>(255 * (1.0f - colorBlend) + beatColor.g * colorBlend),
-            static_cast<sf::Uint8>(255 * (1.0f - colorBlend) + beatColor.b * colorBlend),
-            static_cast<sf::Uint8>(255 * (1.0f - colorBlend) + beatColor.a * colorBlend)
+            static_cast<sf::Uint8>(baseR * (1.0f - colorBlend) + beatColor.r * colorBlend),
+            static_cast<sf::Uint8>(baseG * (1.0f - colorBlend) + beatColor.g * colorBlend),
+            static_cast<sf::Uint8>(baseB * (1.0f - colorBlend) + beatColor.b * colorBlend),
+            static_cast<sf::Uint8>(baseA * (1.0f - colorBlend) + beatColor.a * colorBlend)
         );
         sprite->setColor(interpolatedColor);
     }
 
     float currentX;
     float currentY;
-    if (isReturning)
+
+    if(!isEnding)
     {
-        currentX = target_X + (home_X - target_X) * progress;
-        currentY = target_Y + (home_Y - target_Y) * progress;
+        if (isReturning)
+        {
+            currentX = target_X + (home_X - target_X) * progress;
+            currentY = target_Y + (home_Y - target_Y) * progress;
+        }
+        else
+        {
+            currentX = home_X + (target_X - home_X) * progress;
+            currentY = home_Y + (target_Y - home_Y) * progress;
+        }
     }
     else
     {
+        if(initEnd != true)
+        {
+            home_X = posX;
+            home_Y = posY;
+
+            target_Y = half_Y;
+
+            initEnd = true;
+        }
         currentX = home_X + (target_X - home_X) * progress;
         currentY = home_Y + (target_Y - home_Y) * progress;
     }
@@ -133,6 +179,10 @@ void BeatCircle::beat()
     {
         bg->setBeatColor(this->beatColor);
         bg->beat();
+        if(id == 0)
+        {
+            bigBeat();
+        }
     }
     //std::cout << "beat!" << std::endl;
 }
@@ -149,4 +199,16 @@ void BeatCircle::clickBeat()
         bg->setBeatColor(this->beatColor);
         bg->beat();
     }
+}
+
+void BeatCircle::bigBeat()
+{
+
+}
+
+void BeatCircle::startEnd()
+{
+    this->isEnding = true;
+    this->progress = 0;
+    this->speed = this->speed * 1.5;
 }

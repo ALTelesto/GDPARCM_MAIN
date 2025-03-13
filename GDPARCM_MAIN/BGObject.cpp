@@ -13,7 +13,7 @@ void BGObject::initialize()
 
 	//assign texture
 	this->sprite = new sf::Sprite();
-	sf::Texture* texture = TextureManager::getInstance()->getFromTextureMap("Desert", 0);
+	sf::Texture* texture = TextureManager::getInstance()->getFromTextureMap("rain", 0);
 	texture->setRepeated(true);
 	this->sprite->setTexture(*texture);
 	sf::Vector2u textureSize = this->sprite->getTexture()->getSize();

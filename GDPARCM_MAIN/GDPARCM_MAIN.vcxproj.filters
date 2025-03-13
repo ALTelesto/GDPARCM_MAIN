@@ -61,6 +61,27 @@
     <Filter Include="Source Files\GameObjects\Loading Screen Entities\BeatBG">
       <UniqueIdentifier>{a2fac790-4a51-4a0c-a71d-23e251e722f9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameObjects\Loading Screen Entities\StaticSprite">
+      <UniqueIdentifier>{3fa01ede-6f64-4628-9a34-d8c4fe7ab1c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Pooling">
+      <UniqueIdentifier>{7e845895-4a82-4c34-9f88-c68f1e04023f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Loading Screen Entities\LoadingBar">
+      <UniqueIdentifier>{c22b81fc-1e8e-4b8f-947d-bf13f1691f69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Loading Screen Entities\LoadingDoneText">
+      <UniqueIdentifier>{1a902ae8-b001-4f9b-b8f9-dfbfac5f7add}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Loading Screen Entities\AnimatedSprite">
+      <UniqueIdentifier>{12f0a7fb-39e7-445a-93c7-7efda1df6911}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Loading Screen Entities\Thrower">
+      <UniqueIdentifier>{d4cdfb27-876b-48b8-aed8-c442a1d3ca32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Loading Screen Entities\ThrownObject">
+      <UniqueIdentifier>{14baf91f-d8bf-4185-afa7-7ecae068d6bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -129,6 +150,36 @@
     <ClCompile Include="SFXManager.cpp">
       <Filter>Source Files\Resources</Filter>
     </ClCompile>
+    <ClCompile Include="StaticSprite.cpp">
+      <Filter>Source Files\GameObjects\Loading Screen Entities\StaticSprite</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadingScreenManager.cpp">
+      <Filter>Source Files\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="PoolableObject.cpp">
+      <Filter>Source Files\GameObjects\Pooling</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectPool.cpp">
+      <Filter>Source Files\GameObjects\Pooling</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadingBar.cpp">
+      <Filter>Source Files\GameObjects\Loading Screen Entities\LoadingBar</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadingDoneText.cpp">
+      <Filter>Source Files\GameObjects\Loading Screen Entities\LoadingDoneText</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedSprite.cpp">
+      <Filter>Source Files\GameObjects\Loading Screen Entities\AnimatedSprite</Filter>
+    </ClCompile>
+    <ClCompile Include="ThrownObject.cpp">
+      <Filter>Source Files\GameObjects\Loading Screen Entities\ThrownObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Thrower.cpp">
+      <Filter>Source Files\GameObjects\Loading Screen Entities\Thrower</Filter>
+    </ClCompile>
+    <ClCompile Include="MusicPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AGameObject.h">
@@ -193,6 +244,36 @@
     </ClInclude>
     <ClInclude Include="SFXManager.h">
       <Filter>Source Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticSprite.h">
+      <Filter>Source Files\GameObjects\Loading Screen Entities\StaticSprite</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadingScreenManager.h">
+      <Filter>Source Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="PoolableObject.h">
+      <Filter>Source Files\GameObjects\Pooling</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectPool.h">
+      <Filter>Source Files\GameObjects\Pooling</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadingBar.h">
+      <Filter>Source Files\GameObjects\Loading Screen Entities\LoadingBar</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadingDoneText.h">
+      <Filter>Source Files\GameObjects\Loading Screen Entities\LoadingDoneText</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedSprite.h">
+      <Filter>Source Files\GameObjects\Loading Screen Entities\AnimatedSprite</Filter>
+    </ClInclude>
+    <ClInclude Include="ThrownObject.h">
+      <Filter>Source Files\GameObjects\Loading Screen Entities\ThrownObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Thrower.h">
+      <Filter>Source Files\GameObjects\Loading Screen Entities\Thrower</Filter>
+    </ClInclude>
+    <ClInclude Include="MusicPlayer.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
