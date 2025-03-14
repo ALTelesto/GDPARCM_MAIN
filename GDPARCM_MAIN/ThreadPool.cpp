@@ -53,16 +53,11 @@ void ThreadPool::run()
 				workerThread->assignTask(this->pendingActions.front());
 				workerThread->start();
 				this->pendingActions.pop();
+				std::this_thread::sleep_for(std::chrono::milliseconds(200));
 			}
-			else
-			{
-				
-			}
+			else{}
 		}
-		else
-		{
-			
-		}
+		else{}
 	}
 }
 
@@ -72,7 +67,7 @@ void ThreadPool::onFinished(int threadID)
 	{
 		delete this->activeThreads[threadID];
 		this->activeThreads.erase(threadID);
-
 		this->inactiveThreads.push(new PoolWorkerThread(threadID, this));
+		std::this_thread::sleep_for(std::chrono::milliseconds(200));
 	}
 }

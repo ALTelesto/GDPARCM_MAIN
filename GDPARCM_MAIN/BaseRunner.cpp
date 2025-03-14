@@ -2,7 +2,6 @@
 #include  "GameObjectManager.h"
 #include "BGObject.h"
 #include "TextureManager.h"
-#include "TextureDisplay.h"
 #include "FPSCounter.h"
 #include <iostream>
 
@@ -12,9 +11,10 @@
 #include "LoadingBar.h"
 #include "LoadingDoneText.h"
 #include "LoadingScreenManager.h"
+#include "MusicPlayer.h"
 #include "SFXManager.h"
 #include "StaticSprite.h"
-#include "Thrower.h"
+#include "ThreadManager.h"
 
 /// <summary>
 /// This demonstrates a running parallax background where after X seconds, a batch of assets will be streamed and loaded.
@@ -24,10 +24,12 @@ const sf::Time BaseRunner::TIME_PER_FRAME = sf::seconds(1.0f / FRAME_RATE);
 BaseRunner* BaseRunner::sharedInstance = NULL;
 
 BaseRunner::BaseRunner() :
-	window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "HO: Entity Component", sf::Style::Close) {
+	window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Divisi", sf::Style::Close) {
 
 	sharedInstance = this;
 	this->window.setFramerateLimit(int(FRAME_RATE));
+
+	ThreadManager::getInstance();
 
 	//load initial textures
 	TextureManager::getInstance()->loadFromAssetList();
@@ -35,14 +37,9 @@ BaseRunner::BaseRunner() :
 	//load initial sfx
 	SFXManager::getInstance()->loadFromAssetList();
 
-	LoadingScreenManager::getInstance();
+	LoadingScreenManager::getInstance()->startLoading();
 
 	//load objects
-	//BGObject* bgObject = new BGObject("BGObject");
-	//GameObjectManager::getInstance()->addObject(bgObject);
-
-	//TextureDisplay* display = new TextureDisplay();
-	//GameObjectManager::getInstance()->addObject(display);
 	BeatBG* bgObject = new BeatBG("BGObject");
 	GameObjectManager::getInstance()->addObject(bgObject);
 
@@ -63,8 +60,6 @@ BaseRunner::BaseRunner() :
 	float heightPartition = WINDOW_HEIGHT / 5;
 
 	//lines
-	/*StaticSprite* test = new StaticSprite("test", "whitebg");
-	GameObjectManager::getInstance()->addObject(test);*/
 	StaticSprite* topLine = new StaticSprite("TopLine", "beatline");
 	topLine->setPosition(100, heightPartition - (heightPartition / 2));
 	topLine->setColor(sf::Color(255, 255, 255, 100));
@@ -75,6 +70,7 @@ BaseRunner::BaseRunner() :
 	bottomLine->setColor(sf::Color(255, 255, 255, 100));
 	GameObjectManager::getInstance()->addObject(bottomLine);
 
+	//loading bar
 	LoadingBar* loadingBar = new LoadingBar("LoadingBar");
 	loadingBar->setPosition(100, heightPartition + heightPartition * 3 + 105);
 	loadingBar->setScale(1, 10);
@@ -96,33 +92,8 @@ BaseRunner::BaseRunner() :
 	LoadingDoneText* doneText = new LoadingDoneText("Loading Done");
 	GameObjectManager::getInstance()->addObject(doneText);
 
-	//loaded scene stuff
-	std::vector<std::string> frames;
-
-	/*StaticSprite* white = new StaticSprite("white");
-	white->setTexture("whitebg");
-
-	BGObject* rain = new BGObject("rain");
-	GameObjectManager::getInstance()->addObject(rain);*/
-
-	Thrower* thrower = new Thrower("thrower");
-	GameObjectManager::getInstance()->addObject(thrower);
-
-	/*AnimatedSprite* girl = new AnimatedSprite("girl");
-	frames = { "biggirl0","biggirl1","biggirl2" };
-	girl->setFrames(frames);
-	girl->setScale(0.037, 0.037);
-	girl->setPosition(WINDOW_WIDTH / 2 - 342.25 / 2 - 220, WINDOW_HEIGHT - 640);
-	GameObjectManager::getInstance()->addObject(girl);
-
-	AnimatedSprite* man = new AnimatedSprite("man");
-	frames = { "bigman0","bigman1","bigman2"};
-	man->setFrames(frames);
-	man->setScale(0.037, 0.037);
-	man->setPosition(WINDOW_WIDTH / 2 - 342.25/2, WINDOW_HEIGHT - 660);
-	GameObjectManager::getInstance()->addObject(man);*/
-
 	FPSCounter* fpsCounter = new FPSCounter();
+	fpsCounter->setLayer(2);
 	GameObjectManager::getInstance()->addObject(fpsCounter);
 }
 

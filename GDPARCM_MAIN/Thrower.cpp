@@ -17,7 +17,7 @@ Thrower::Thrower(String name) : AGameObject(name)
 
 void Thrower::initialize()
 {
-	std::vector<String> frames = {"circle","circle"};
+	std::vector<String> frames = {"obj0", "obj1", "obj2", "obj3", "obj4", "obj5", "obj6", };
 
 	for (String textureName : frames)
 	{
@@ -25,7 +25,6 @@ void Thrower::initialize()
 		if (texture == nullptr) return;
 		this->frames.push_back(texture);
 	}
-	std::cout << "frame size thrower is " << this->frames.size() << std::endl;
 }
 
 void Thrower::processInput(sf::Event event)
@@ -38,7 +37,6 @@ void Thrower::update(sf::Time deltaTime)
 	if(tick >= delay)
 	{
 		if (LoadingScreenManager::getInstance()->getObjectNum() >= 12) return;
-		std::cout << "throw!" << std::endl;
 
 		tick = 0;
 

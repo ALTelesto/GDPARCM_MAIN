@@ -1,12 +1,4 @@
-Media/Textures/Desert.png
 Media/Textures/circle.png
 Media/Textures/gradient.png
 Media/Textures/whitebg.png
 Media/Textures/beatline.png
-Media/Streaming/rain.png
-Media/Streaming/bigman0.png
-Media/Streaming/bigman1.png
-Media/Streaming/bigman2.png
-Media/Streaming/biggirl0.png
-Media/Streaming/biggirl1.png
-Media/Streaming/biggirl2.png

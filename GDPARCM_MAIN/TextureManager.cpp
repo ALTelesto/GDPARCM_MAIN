@@ -24,7 +24,7 @@ TextureManager* TextureManager::getInstance() {
 TextureManager::TextureManager()
 {
 	this->countStreamingAssets();
-	this->threadPool = new ThreadPool("Texture Manager Threads", 6);
+	this->threadPool = new ThreadPool("Texture Manager Threads", 2);
 	this->threadPool->startScheduler();
 }
 
@@ -126,6 +126,7 @@ void TextureManager::countStreamingAssets()
 
 void TextureManager::instantiateAsTexture(String path, String assetName, bool isStreaming)
 {
+	std::cout << "[TextureManager] Loading: " << assetName << std::endl;
 	sf::Texture* texture = new sf::Texture();
 	texture->loadFromFile(path);
 	this->textureMap[assetName].push_back(texture);

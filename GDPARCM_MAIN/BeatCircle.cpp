@@ -7,6 +7,7 @@
 #include "LoadingScreenManager.h"
 #include "SFXManager.h"
 #include "TextureManager.h"
+#include "TransitionScreen.h"
 
 BeatCircle::BeatCircle(String name, int id) : AGameObject(name), id(id)
 {
@@ -53,7 +54,7 @@ void BeatCircle::processInput(sf::Event event)
         isClick = false;
     }
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) && LoadingScreenManager::getInstance()->isDone())
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter) && LoadingScreenManager::getInstance()->isDone())
     {
         this->startEnd();
     }
@@ -88,6 +89,12 @@ void BeatCircle::update(sf::Time deltaTime)
         else if(colorBlend <= 0.0f && ended)
         {
             colorBlend = 0.0f;
+            if(this->id == 5)
+            {
+                TransitionScreen* screen = new TransitionScreen("transition");
+                screen->setLayer(2);
+                GameObjectManager::getInstance()->addObject(screen);
+            }
             GameObjectManager::getInstance()->deleteObject(this);
             return;
         }

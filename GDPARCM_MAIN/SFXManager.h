@@ -25,18 +25,20 @@ public:
 
 	void onFinishedExecution() override;
 
-	ThreadPool* getThreadPool();
+	int getStreamingAssetCount();
+
 private:
 	SFXManager();
 	SFXManager(SFXManager const&) {};             // copy constructor is private
 	SFXManager& operator=(SFXManager const&) {};  // assignment operator is private
 	static SFXManager* sharedInstance;
 
+	void countStreamingAssets();
+	int streamingAssetCount = 0;
+
 	HashTable soundMap;
 	SoundList baseSoundList;
 	SoundList streamingSoundList;
-
-	ThreadPool* threadPool;
 
 	const std::string STREAMING_PATH = "Media/SFXStreaming/";
 

@@ -21,8 +21,16 @@ SFXManager* SFXManager::getInstance()
 
 SFXManager::SFXManager()
 {
-	this->threadPool = new ThreadPool("SFX Manager Threads", 6);
-	this->threadPool->startScheduler();
+	this->countStreamingAssets();
+}
+
+void SFXManager::countStreamingAssets()
+{
+	this->streamingAssetCount = 0;
+	for (const auto& entry : std::filesystem::directory_iterator(STREAMING_PATH)) {
+		this->streamingAssetCount++;
+	}
+	std::cout << "[SFXManager] Number of streaming assets: " << this->streamingAssetCount << std::endl;
 }
 
 void SFXManager::loadFromAssetList()
@@ -58,6 +66,7 @@ sf::SoundBuffer* SFXManager::getStreamSoundFromList(const int index)
 
 void SFXManager::instantiateAsSound(String path, String assetName, bool isStreaming)
 {
+	std::cout << "[SFXManager] Loading: " << assetName << std::endl;
 	sf::SoundBuffer* sound = new sf::SoundBuffer;
 	sound->loadFromFile(path);
 	this->soundMap[assetName] = sound;
@@ -76,9 +85,9 @@ void SFXManager::onFinishedExecution()
 {
 }
 
-ThreadPool* SFXManager::getThreadPool()
+int SFXManager::getStreamingAssetCount()
 {
-	return this->threadPool;
+	return this->streamingAssetCount;
 }
 
 

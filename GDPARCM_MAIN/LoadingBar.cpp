@@ -21,10 +21,19 @@ void LoadingBar::initialize()
 
 void LoadingBar::processInput(sf::Event event)
 {
+	//for debugging
+	/*if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::P))
+	{
+		LoadingScreenManager::getInstance()->setProgress(1);
+	}*/
 }
 
 void LoadingBar::update(sf::Time deltaTime)
 {
-	if (LoadingScreenManager::getInstance()->isDone()) GameObjectManager::getInstance()->deleteObject(this);
-	this->sprite->setColor(sf::Color(255, 255, 255, 255 * LoadingScreenManager::getInstance()->getProgress()));
+	if (LoadingScreenManager::getInstance()->isDone())
+	{
+		GameObjectManager::getInstance()->deleteObject(this);
+		return;
+	}
+	this->sprite->setColor(sf::Color(255 * LoadingScreenManager::getInstance()->getProgress(), 255 * LoadingScreenManager::getInstance()->getProgress(), 255 * LoadingScreenManager::getInstance()->getProgress(), 255 * LoadingScreenManager::getInstance()->getProgress()));
 }

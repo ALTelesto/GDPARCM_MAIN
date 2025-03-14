@@ -33,5 +33,7 @@ class GameObjectManager
 
 		HashTable gameObjectMap;
 		List gameObjectList;
+		List gameObjectList1;
+		List gameObjectList2;
 };
 

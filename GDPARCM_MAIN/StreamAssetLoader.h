@@ -8,7 +8,7 @@ class StreamAssetLoader :
 private:
 	typedef std::string String;
 public:
-	StreamAssetLoader(String path, IExecutionEvent* executionEvent);
+	StreamAssetLoader(String path, IExecutionEvent* executionEvent, bool texture = true);
 	~StreamAssetLoader();
 
 	void onStartTask() override;
@@ -16,5 +16,7 @@ public:
 private:
 	String path;
 	IExecutionEvent* execEvent;
+
+	bool texture;
 };
 

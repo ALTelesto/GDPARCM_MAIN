@@ -23,6 +23,9 @@ class AGameObject: sf::NonCopyable
 		void setEnabled(bool value);
 		bool isEnabled();
 
+		void setLayer(int value);
+		int getLayer();
+
 	protected:
 		String name;
 		sf::Sprite* sprite;
@@ -30,6 +33,8 @@ class AGameObject: sf::NonCopyable
 
 		float posX = 0.0f; float posY = 0.0f;
 		float scaleX = 1.0f; float scaleY = 1.0f;
+
+		int layer = 0;
 
 		bool enabled = true;
 };

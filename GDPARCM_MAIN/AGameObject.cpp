@@ -65,6 +65,16 @@ bool AGameObject::isEnabled()
 	return this->enabled;
 }
 
+void AGameObject::setLayer(int value)
+{
+	this->layer = value;
+}
+
+int AGameObject::getLayer()
+{
+	return this->layer;
+}
+
 sf::FloatRect AGameObject::getLocalBounds()
 {
 	return this->sprite->getLocalBounds();

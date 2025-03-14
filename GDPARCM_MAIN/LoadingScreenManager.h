@@ -1,5 +1,7 @@
 #pragma once
-class LoadingScreenManager
+#include "IExecutionEvent.h"
+
+class LoadingScreenManager : public IExecutionEvent
 {
 public:
 	static LoadingScreenManager* getInstance();
@@ -9,12 +11,15 @@ public:
 
 	bool isDone();
 
-	bool isLoadingAnimDone();
-	void setLoadingAnimDone(bool value);
+	void startLoading();
+
+	void loadScene();
 
 	int getObjectNum();
 	void addObject();
 	void removeObject();
+
+	void onFinishedExecution() override;
 
 private:
 	LoadingScreenManager();
@@ -23,7 +28,6 @@ private:
 	static LoadingScreenManager* sharedInstance;
 
 	float progress = 0.0f;
-	bool finishLoadingAnim = false;
 
 	int spawnedObjects = 0;
 };

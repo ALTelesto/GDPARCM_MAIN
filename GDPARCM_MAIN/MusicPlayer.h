@@ -12,7 +12,9 @@ public:
     void update(sf::Time deltaTime) override;
 
 private:
-    std::vector<sf::SoundBuffer> source;
+    int index = 0;
+    std::vector<sf::SoundBuffer*> source;
     sf::Sound* sound;
+    bool pressed = false;
 };
 

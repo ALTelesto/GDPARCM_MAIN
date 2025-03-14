@@ -21,6 +21,11 @@ private:
     float speed;
     float gravity = 450;
 
+    float rBaseSpeed = 0.f;
+    float rVarianceSpeed = 1.15f;
+    float rSpeed;
+    float angle = 0.f;
+
     int index = -1;
 };
 

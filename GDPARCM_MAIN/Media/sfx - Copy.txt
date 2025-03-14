@@ -1,0 +1,10 @@
+Media/SFX/0.wav
+Media/SFX/1.wav
+Media/SFX/2.wav
+Media/SFX/3.wav
+Media/SFX/4.wav
+Media/SFX/5.wav
+Media/SFX/6.wav
+Media/SFX/7.wav
+Media/SFXStreaming/music0.ogg
+Media/SFXStreaming/music1.ogg

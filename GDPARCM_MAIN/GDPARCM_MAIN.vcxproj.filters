@@ -82,6 +82,15 @@
     <Filter Include="Source Files\GameObjects\Loading Screen Entities\ThrownObject">
       <UniqueIdentifier>{14baf91f-d8bf-4185-afa7-7ecae068d6bc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameObjects\Loading Screen Entities\MusicPlayer">
+      <UniqueIdentifier>{5459a20d-6aee-4516-8515-73bb41863fea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Loading Screen Entities\TransitionScreen">
+      <UniqueIdentifier>{70bebe3e-5984-4197-8030-c1eea2242c2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Threads\LoadingAssetLoader">
+      <UniqueIdentifier>{0a23a6a2-aebf-4f42-a8f2-e13bc24c8e64}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -178,7 +187,16 @@
       <Filter>Source Files\GameObjects\Loading Screen Entities\Thrower</Filter>
     </ClCompile>
     <ClCompile Include="MusicPlayer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GameObjects\Loading Screen Entities\MusicPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionScreen.cpp">
+      <Filter>Source Files\GameObjects\Loading Screen Entities\TransitionScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadManager.cpp">
+      <Filter>Source Files\Threads</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadingAssetLoader.cpp">
+      <Filter>Source Files\Threads\LoadingAssetLoader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -273,7 +291,16 @@
       <Filter>Source Files\GameObjects\Loading Screen Entities\Thrower</Filter>
     </ClInclude>
     <ClInclude Include="MusicPlayer.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\GameObjects\Loading Screen Entities\MusicPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionScreen.h">
+      <Filter>Source Files\GameObjects\Loading Screen Entities\TransitionScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadManager.h">
+      <Filter>Source Files\Threads</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadingAssetLoader.h">
+      <Filter>Source Files\Threads\LoadingAssetLoader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

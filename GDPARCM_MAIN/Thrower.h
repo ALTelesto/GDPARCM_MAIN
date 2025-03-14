@@ -15,7 +15,7 @@ public:
 private:
     Frames frames;
 
-    float baseDelay = 0.5f;
+    float baseDelay = 0.3f;
     float variance = 0.2f;
     float delay;
     float tick;

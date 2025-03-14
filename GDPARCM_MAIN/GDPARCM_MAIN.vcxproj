@@ -146,6 +146,7 @@
     <ClCompile Include="IETThread.cpp" />
     <ClCompile Include="IExecutionEvent.cpp" />
     <ClCompile Include="IWorkerAction.cpp" />
+    <ClCompile Include="LoadingAssetLoader.cpp" />
     <ClCompile Include="LoadingBar.cpp" />
     <ClCompile Include="LoadingDoneText.cpp" />
     <ClCompile Include="LoadingScreenManager.cpp" />
@@ -160,9 +161,11 @@
     <ClCompile Include="StringUtils.cpp" />
     <ClCompile Include="TextureDisplay.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="ThreadManager.cpp" />
     <ClCompile Include="ThreadPool.cpp" />
     <ClCompile Include="Thrower.cpp" />
     <ClCompile Include="ThrownObject.cpp" />
+    <ClCompile Include="TransitionScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AGameObject.h" />
@@ -180,6 +183,7 @@
     <ClInclude Include="IETThread.h" />
     <ClInclude Include="IExecutionEvent.h" />
     <ClInclude Include="IWorkerAction.h" />
+    <ClInclude Include="LoadingAssetLoader.h" />
     <ClInclude Include="LoadingBar.h" />
     <ClInclude Include="LoadingDoneText.h" />
     <ClInclude Include="LoadingScreenManager.h" />
@@ -193,9 +197,11 @@
     <ClInclude Include="StringUtils.h" />
     <ClInclude Include="TextureDisplay.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="ThreadManager.h" />
     <ClInclude Include="ThreadPool.h" />
     <ClInclude Include="Thrower.h" />
     <ClInclude Include="ThrownObject.h" />
+    <ClInclude Include="TransitionScreen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

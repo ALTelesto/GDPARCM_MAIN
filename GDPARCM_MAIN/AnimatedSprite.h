@@ -10,17 +10,22 @@ public:
     void initialize() override;
     void update(sf::Time deltaTime) override;
     void processInput(sf::Event event) override;
+    void draw(sf::RenderWindow* targetWindow) override;
 
     void setFrames(std::vector<String> frames);
 
 private:
     void nextFrame();
 
+	Frames frames;
+    std::vector<sf::Sprite*> frameList;
+
     int index = -1;
     float baseTime = 0.33f;
     float variance = 0.01f;
     float frameTime = 0.33f;
     float tick = 0.0f;
-    Frames frames;
+
+    bool reverse = false;
 };
 
