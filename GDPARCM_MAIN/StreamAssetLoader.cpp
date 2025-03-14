@@ -21,8 +21,6 @@ StreamAssetLoader::~StreamAssetLoader()
 
 void StreamAssetLoader::onStartTask()
 {
-	//IETThread::sleep(1000);
-
 	std::vector<String> tokens = StringUtils::split(path, '/');
 	String assetName = StringUtils::split(tokens[tokens.size() - 1], '.')[0];
 	if (texture) TextureManager::getInstance()->instantiateAsTexture(path, assetName, true);
